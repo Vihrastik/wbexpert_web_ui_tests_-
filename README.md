@@ -1,27 +1,21 @@
-**Web Ui тесты wbexpert.ru**
+**Web Ui tests**
 
-Используется фреймворк pytest(https://habr.com/ru/post/448782/), команды для запуска тестов:
-- запуск всех тестов в репозитории 
+The framework used is pytest (https://habr.com/ru/post/448782/), with the following commands to run the tests:
+- To run all tests in the repository:
 `pytest`
-- запуск тестов для конкретной страницы (например, /analytics/)
+- To run tests for a specific page (e.g., /analytics/):
 `pytest src/tests/test_analytics_page.py::TestAnalyticsPage`
-- запуск одного теста 
+- To run a single test: 
 `pytest src/tests/test_analytics_page.py::TestAnalyticsPage::test_web_ui_45_check_analyticts_page_locators`
-- запуск на бете
+- To run on the beta environment:
 `pytest --beta`
 
-Команда запуска тестов для ранера находится в файле .gitlab-ci.yml.
+The test run command for the runner is located in the .gitlab-ci.yml file.
 
-По умолчанию открывается Chrome на удаленной машине через RemoteWebDriver.
-Настройки находятся в файле settings.py:
-- для удаленного запуска используется RemoteWebDriver в PARAMS['driver']
-- для локального запуска нужно выбрать нужный драйвер из selenium.webdriver и указать в PARAMS['driver']
-- DesiredCapabilities - это параметры, которые нужно использовать для настройки сеанса браузера. Локально должны совпадать с выбранным selenium.webdriver.
-- для локального запуска в PARAMS['driver_data'] нужно указать путь к исполняемому файлу драйвера (в папке settings уже лежит Chrome для винды и линукса).
+By default, Chrome is opened on a remote machine via RemoteWebDriver. The settings are in the file settings.py:
+- For remote execution, RemoteWebDriver is used in PARAMS['driver'].
+- For local execution, the appropriate driver from selenium.webdriver needs to be selected and specified in PARAMS['driver'].
+- DesiredCapabilities are the parameters that need to be used for configuring the browser session. Locally, these should match the selected selenium.webdriver.
+- For local execution, the path to the driver executable should be specified in PARAMS['driver_data'] (the folder settings already contains Chrome for Windows and Linux).
 
-
-Удаленно тесты запускаются на selenoid
-(описание https://aerokube.com/selenoid/)
-Можно зайти в сессию, открыть полный экран, вмешаться в процесс выполнения.
-
-Для хранения текстового описания кейсов используется testlink
+Tests are run remotely on Selenoid (description: https://aerokube.com/selenoid/) You can join the session, go full screen, and intervene in the execution process.
