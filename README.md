@@ -1,5 +1,6 @@
 **Web Ui tests**
 
+The tests were created for the company Anabar.
 The framework used is pytest (https://habr.com/ru/post/448782/), with the following commands to run the tests:
 - To run all tests in the repository:
 `pytest`
